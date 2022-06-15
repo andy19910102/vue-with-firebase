@@ -41,6 +41,7 @@ export default {
       isAdmin: false,
       user: {
         email: "",
+        uid: "",
       },
     };
   },
@@ -69,7 +70,8 @@ export default {
         //login...
         this.isLogin = true;
         this.user.email = user.email;
-        getDoc(doc(db, "adminList/" + user.email))
+        this.user.uid = user.uid;
+        getDoc(doc(db, "adminList/" + user.uid))
           .then((doc) => {
             console.log("doc", doc.exists());
             if (doc.exists()) {
